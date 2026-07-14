@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Form with PDF Export</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Submit Your Information</h1>
+        
+        <form id="dataForm">
+            <!-- Personal Details Section -->
+            <fieldset>
+                <legend>Personal Information</legend>
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Image Capture/Upload Section -->
+            <fieldset>
+                <legend>Image Upload</legend>
+                
+                <div class="image-section">
+                    <div class="form-group">
+                        <label>Capture Image with Camera</label>
+                        <video id="cameraStream" width="320" height="240" style="border: 2px solid #ccc; display: none;"></video>
+                        <div class="button-group">
+                            <button type="button" id="startCamera" class="btn btn-primary">Start Camera</button>
+                            <button type="button" id="capturePhoto" class="btn btn-success" style="display: none;">Capture Photo</button>
+                            <button type="button" id="stopCamera" class="btn btn-danger" style="display: none;">Stop Camera</button>
+                        </div>
+                        <canvas id="photoCanvas" style="display: none;"></canvas>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imageUpload">Or Upload an Image File</label>
+                        <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+                        <small>Accepted formats: JPG, PNG, GIF (Max 5MB)</small>
+                    </div>
+
+                    <div id="imagePreview" class="image-preview">
+                        <img id="previewImage" src="" alt="Preview" style="display: none;">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Additional Details -->
+            <fieldset>
+                <legend>Additional Details</legend>
+                
+                <div class="form-group">
+                    <label for="description">Description/Notes</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Enter any additional information..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="">Select a category</option>
+                        <option value="complaint">Complaint</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="inquiry">Inquiry</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-large">Generate PDF & Send Email</button>
+                <button type="reset" class="btn btn-secondary btn-large">Clear Form</button>
+            </div>
+        </form>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
